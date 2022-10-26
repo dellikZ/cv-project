@@ -1,9 +1,7 @@
 import { MdEmail } from 'react-icons/md'
 import { AiFillPhone } from 'react-icons/ai';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import { jsPDF } from 'jspdf';
 import { useRef } from 'react';
-import html2canvas from 'html2canvas';
 import { useState } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
@@ -29,7 +27,8 @@ const GeneratedCV = ({ gen, edu, wk, eduArray, workArray, handleDeleteEdu, handl
     return (
         <div className="page">
             <h2 className='bigger'>Your CV was succesfully generated!</h2>
-            <div className="cv" ref={cvPDF}>
+            {(window.screen.width > 980) && 
+                <div className="cv" ref={cvPDF}>
                 <div className="left-cv">
                     <div className="upper-left">
                         <div className="name">
@@ -49,9 +48,9 @@ const GeneratedCV = ({ gen, edu, wk, eduArray, workArray, handleDeleteEdu, handl
                     </div>
                     <div className="contact-cv">
                         <h4>Contact me:</h4>
-                        <p>Email: {gen.email}</p>
-                        <p>Phone: {gen.phone}</p>
-                        <p>Address: {gen.address}</p>
+                        <p><MdEmail /> {gen.email}</p>
+                        <p><AiFillPhone /> {gen.phone}</p>
+                        <p><FaMapMarkerAlt /> {gen.address}</p>
                     </div>
                 </div>
                 <div className="right-cv">
@@ -90,6 +89,7 @@ const GeneratedCV = ({ gen, edu, wk, eduArray, workArray, handleDeleteEdu, handl
                 </div>
                 
             </div>
+            }
             <div className="buttons-cv">
                 <button className="fixed" onClick={() => {setIsActive(true); generatePDF()}}>Download PDF</button>
   
