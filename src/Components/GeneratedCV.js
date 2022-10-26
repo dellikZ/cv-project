@@ -17,10 +17,10 @@ const GeneratedCV = ({ gen, edu, wk, eduArray, workArray, handleDeleteEdu, handl
     })
   
 
-    const [ isActive, setIsActive ]= useState(true);
+    const [ isActive, setIsActive ]= useState(false);
 
     const handleActive = () => {
-        setIsActive(current => !current);
+        setIsActive(true);
     }
 
 
@@ -60,7 +60,7 @@ const GeneratedCV = ({ gen, edu, wk, eduArray, workArray, handleDeleteEdu, handl
                             <div className="item" key={item.id}>
                                 <div className="item-header">
                                     <h2>{item.company}</h2>
-                                    <button className={`del ${isActive ? "display":"none"}`} onClick={() => {handleDeleteWork(item.id)}}>X</button>
+                                    <button className={`del ${isActive ? "display":"none"}`} onClick={() => {handleDeleteWork(item.id)}}></button>
                                     
                                 </div>
                                 <p>{item.startYear} to {item.endYear}</p>
@@ -78,7 +78,7 @@ const GeneratedCV = ({ gen, edu, wk, eduArray, workArray, handleDeleteEdu, handl
                             <div className="item" key={item.id}>
                                 <div className="item-header">
                                     <h2>{item.institution}</h2>
-                                    <button className='del' onClick={() => {handleDeleteEdu(item.id)}}>X</button>
+                                    <button className='del' onClick={() => {handleDeleteEdu(item.id)}}></button>
                                 </div>
                                 <p>{item.startYear} to {item.endYear}</p>
                                 <p>Degree: {item.degree}</p>
