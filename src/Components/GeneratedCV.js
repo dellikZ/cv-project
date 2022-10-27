@@ -2,7 +2,6 @@ import { MdEmail } from 'react-icons/md'
 import { AiFillPhone } from 'react-icons/ai';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { useRef } from 'react';
-import { useState } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 
@@ -15,14 +14,6 @@ const GeneratedCV = ({ gen, edu, wk, eduArray, workArray, handleDeleteEdu, handl
         documentTitle: 'generated',
         onAfterPrint: () => console.log('print successfull')
     })
-  
-
-    const [ isActive, setIsActive ]= useState(false);
-
-    const handleActive = () => {
-        setIsActive(true);
-    }
-
 
     return (
         <div className="page">
@@ -60,7 +51,7 @@ const GeneratedCV = ({ gen, edu, wk, eduArray, workArray, handleDeleteEdu, handl
                             <div className="item" key={item.id}>
                                 <div className="item-header">
                                     <h2>{item.company}</h2>
-                                    <button className={`del ${isActive ? "display":"none"}`} onClick={() => {handleDeleteWork(item.id)}}></button>
+                                    <button className='del-btn' onClick={() => {handleDeleteWork(item.id)}}></button>
                                     
                                 </div>
                                 <p>{item.startYear} to {item.endYear}</p>
@@ -78,7 +69,7 @@ const GeneratedCV = ({ gen, edu, wk, eduArray, workArray, handleDeleteEdu, handl
                             <div className="item" key={item.id}>
                                 <div className="item-header">
                                     <h2>{item.institution}</h2>
-                                    <button className='del' onClick={() => {handleDeleteEdu(item.id)}}></button>
+                                    <button className='del-btn' onClick={() => {handleDeleteEdu(item.id)}}></button>
                                 </div>
                                 <p>{item.startYear} to {item.endYear}</p>
                                 <p>Degree: {item.degree}</p>
@@ -91,7 +82,7 @@ const GeneratedCV = ({ gen, edu, wk, eduArray, workArray, handleDeleteEdu, handl
             </div>
             }
             <div className="buttons-cv">
-                <button className="fixed" onClick={() => {setIsActive(true); generatePDF()}}>Download PDF</button>
+                <button className="fixed" onClick={() => {generatePDF()}}>Download PDF</button>
   
             </div>
         </div>

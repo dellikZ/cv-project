@@ -116,6 +116,9 @@ body, html {
 
 body {
   padding: 10px;
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0f2027, #203a43, #2c5364); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -132,6 +135,7 @@ code {
   width: 100vw;
   height: 100%;
   
+  
 }
 
 .info {
@@ -141,10 +145,14 @@ code {
   flex-wrap: wrap;
   align-items: center;
   width: 50vw;
-  border: 1px solid black;
+
   margin: 20px;
   border-radius: 10px;
   padding: 5px;
+}
+
+.info h2 {
+  padding: 10px;
 }
 
 .big-info {
@@ -168,7 +176,15 @@ input {
   width: clamp(100px, 16vw, 18vw);
   height: 20px;
   border-radius: 8px;
-  border: 1px solid gray
+  border: 1px solid gray;
+  transition: height 1s;
+  transition: width 1s;
+
+}
+
+input:hover {
+  height: 25px;
+  width: 18.1vw;
 }
 
 input[type="file"] {
@@ -177,7 +193,7 @@ input[type="file"] {
 
 #photo-select {
   cursor: pointer;
-  background-color: #f1356f;
+  background-color: #36454F;
   margin: 10px;
   border-radius: 8px;
   height: 10px;
@@ -197,6 +213,7 @@ input[type="file"] {
 label {
   text-align: center;
   padding: 10px;
+  color: #fff;
 }
 
 button {
@@ -206,7 +223,7 @@ button {
   border-radius: 8px;
   font-weight: 600;
   color: #fff;
-  background-color: #f1356f;
+  background-color: #36454F;
   cursor: pointer;
 }
 
@@ -242,23 +259,25 @@ h1 {
   width: 100%;
   margin: 0;
   padding: 0;
+  
 }
 
 
 .left-cv {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 25%;
   padding: 0 12px 12px 12px;
   align-items: center;
   gap: 8px;
   background-color: #F8F8F8;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 
 .img-container {
   display: inline-block;
+  
   width: 120px; 
   height: 120px; 
   overflow: hidden;
@@ -266,10 +285,21 @@ h1 {
 }
 
 .img-container img {
+  display: block;
+  max-width: 130px;
+  max-height: 130px;
   width: auto;
   height: 100%;
+  margin: auto;
   object-fit: cover;
   /* border-radius: 50%; */
+  transition: width 1s;
+  transition: height 1s;
+}
+
+.img-container img:hover {
+  width: 135px;
+  height: 135px;
 }
 
 .name {
@@ -290,7 +320,7 @@ h1 {
   align-items: center;
   color: #fff;
   background-color: 	#36454F;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 12px;
 }
 
@@ -327,12 +357,15 @@ h4 {
 }
 
 .contact-cv p {
-  font-size: clamp(0.7vw, 1.2vw, 1.4vw);
+  font-size: clamp(0.7vw, 1vw, 1.2vw);
+  
 }
 
 .right-cv {
-  width: 70%;
-  background-color: hsl(0, 0, 98%);
+  width: auto;
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0f2027, #203a43, #2c5364); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   padding: 10px;
 }
 
@@ -361,7 +394,7 @@ h2 {
 
 h5 {
   font-size: 25px;
-  border-bottom: 3px solid #000;
+  border-bottom: 3px solid #fff;
   width: 25%;
   padding: 5px;
 }
@@ -405,5 +438,61 @@ h5 {
 
 textarea { 
   width: clamp(20vw, 25vw, 30vw);
+  resize: none;
+  border-radius: 8px;
+  border: none;
 }
 
+textarea:active {
+  border: none;
+}
+
+.del-btn {
+  border-radius: 70%;
+  background-color: #000;
+}
+
+input:invalid {
+
+  color: red;
+}
+
+#photo + span {
+  position: relative;
+}
+
+
+
+#photo:invalid {
+  content: 'Pick a photo';
+  color: red;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #fff;
+}
+
+
+@media (max-width: 960px) {
+  .cv {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .left-cv {
+    flex-direction: row;
+    width: 95%;
+    height: 15%;
+    padding: 10px;
+    background-color:#36454F ;
+  }
+
+  .upper-left {
+    padding: 20px;
+  }
+
+  .contact-cv p {
+    color: #fff;
+    font-size: 14px;
+  }
+}

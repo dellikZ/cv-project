@@ -61,7 +61,7 @@ const Homepage = () => {
     return (
         <div className="homepage">
             <h1>CV Maker</h1>
-            <p style={{padding: '20px'}}>Fill all the section in order to generate your CV.</p>
+            <p style={{padding: '20px', color: '#fff'}}>Fill all the section in order to generate your CV.</p>
             <GeneralInformation general={general} onClick={handleGeneral}/>
             <Education ed={education} onClick={handleEducation}/>
             <WorkExperience work={work} onClick={handleWork} />
